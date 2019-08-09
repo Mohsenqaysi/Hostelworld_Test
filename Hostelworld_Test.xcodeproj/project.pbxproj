@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		FC07E70722FDA655001FF593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E70622FDA654001FF593 /* AppDelegate.swift */; };
-		FC07E70922FDA655001FF593 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E70822FDA655001FF593 /* ViewController.swift */; };
 		FC07E70C22FDA655001FF593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC07E70A22FDA655001FF593 /* Main.storyboard */; };
 		FC07E70E22FDA659001FF593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC07E70D22FDA659001FF593 /* Assets.xcassets */; };
 		FC07E71122FDA659001FF593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC07E70F22FDA659001FF593 /* LaunchScreen.storyboard */; };
 		FC07E71C22FDA65A001FF593 /* Hostelworld_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E71B22FDA65A001FF593 /* Hostelworld_TestTests.swift */; };
 		FC07E72722FDA65A001FF593 /* Hostelworld_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E72622FDA65A001FF593 /* Hostelworld_TestUITests.swift */; };
+		FC07E73F22FDA828001FF593 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73622FDA828001FF593 /* BaseCollectionViewController.swift */; };
+		FC07E74122FDA828001FF593 /* VirticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73822FDA828001FF593 /* VirticalStackView.swift */; };
+		FC07E74222FDA828001FF593 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73922FDA828001FF593 /* BaseCollectionViewCell.swift */; };
+		FC07E74322FDA828001FF593 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73A22FDA828001FF593 /* CustomColors.swift */; };
+		FC07E74422FDA828001FF593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73B22FDA828001FF593 /* Extensions.swift */; };
+		FC07E74522FDA828001FF593 /* CellsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73C22FDA828001FF593 /* CellsKeys.swift */; };
+		FC07E74722FDA828001FF593 /* Data+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73E22FDA828001FF593 /* Data+Format.swift */; };
+		FC07E74922FDA97F001FF593 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */; };
+		FC07E74D22FDABF3001FF593 /* PropertyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +44,6 @@
 /* Begin PBXFileReference section */
 		FC07E70322FDA654001FF593 /* Hostelworld_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hostelworld_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC07E70622FDA654001FF593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC07E70822FDA655001FF593 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC07E70B22FDA655001FF593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC07E70D22FDA659001FF593 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC07E71022FDA659001FF593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +54,15 @@
 		FC07E72222FDA65A001FF593 /* Hostelworld_TestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hostelworld_TestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC07E72622FDA65A001FF593 /* Hostelworld_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hostelworld_TestUITests.swift; sourceTree = "<group>"; };
 		FC07E72822FDA65A001FF593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC07E73622FDA828001FF593 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		FC07E73822FDA828001FF593 /* VirticalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirticalStackView.swift; sourceTree = "<group>"; };
+		FC07E73922FDA828001FF593 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC07E73A22FDA828001FF593 /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		FC07E73B22FDA828001FF593 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FC07E73C22FDA828001FF593 /* CellsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsKeys.swift; sourceTree = "<group>"; };
+		FC07E73E22FDA828001FF593 /* Data+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Format.swift"; sourceTree = "<group>"; };
+		FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +113,10 @@
 		FC07E70522FDA654001FF593 /* Hostelworld_Test */ = {
 			isa = PBXGroup;
 			children = (
+				FC07E74A22FDAA79001FF593 /* Views */,
 				FC07E70622FDA654001FF593 /* AppDelegate.swift */,
-				FC07E70822FDA655001FF593 /* ViewController.swift */,
+				FC07E73522FDA828001FF593 /* Helpers */,
+				FC07E73422FDA7EF001FF593 /* Controllers */,
 				FC07E70A22FDA655001FF593 /* Main.storyboard */,
 				FC07E70D22FDA659001FF593 /* Assets.xcassets */,
 				FC07E70F22FDA659001FF593 /* LaunchScreen.storyboard */,
@@ -123,6 +141,44 @@
 				FC07E72822FDA65A001FF593 /* Info.plist */,
 			);
 			path = Hostelworld_TestUITests;
+			sourceTree = "<group>";
+		};
+		FC07E73422FDA7EF001FF593 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FC07E73522FDA828001FF593 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FC07E73622FDA828001FF593 /* BaseCollectionViewController.swift */,
+				FC07E73822FDA828001FF593 /* VirticalStackView.swift */,
+				FC07E73922FDA828001FF593 /* BaseCollectionViewCell.swift */,
+				FC07E73A22FDA828001FF593 /* CustomColors.swift */,
+				FC07E73B22FDA828001FF593 /* Extensions.swift */,
+				FC07E73C22FDA828001FF593 /* CellsKeys.swift */,
+				FC07E73E22FDA828001FF593 /* Data+Format.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FC07E74A22FDAA79001FF593 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC07E74B22FDABC4001FF593 /* Property Cell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC07E74B22FDABC4001FF593 /* Property Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */,
+			);
+			path = "Property Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +312,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC07E70922FDA655001FF593 /* ViewController.swift in Sources */,
+				FC07E73F22FDA828001FF593 /* BaseCollectionViewController.swift in Sources */,
+				FC07E74322FDA828001FF593 /* CustomColors.swift in Sources */,
+				FC07E74422FDA828001FF593 /* Extensions.swift in Sources */,
+				FC07E74522FDA828001FF593 /* CellsKeys.swift in Sources */,
+				FC07E74922FDA97F001FF593 /* MainCollectionViewController.swift in Sources */,
+				FC07E74122FDA828001FF593 /* VirticalStackView.swift in Sources */,
+				FC07E74D22FDABF3001FF593 /* PropertyCollectionViewCell.swift in Sources */,
+				FC07E74722FDA828001FF593 /* Data+Format.swift in Sources */,
 				FC07E70722FDA655001FF593 /* AppDelegate.swift in Sources */,
+				FC07E74222FDA828001FF593 /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
