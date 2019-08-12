@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 private let cellID = "cellID"
 private let addressAndRating = "addressAndRating"
 private let ratingCellID = "ratingCellID"
+private let mapCellID = "mapCellID"
+
 private let headerCellID = "headerCellID"
 
 class PropertyDetailCollectionViewController: BaseCollectionViewController {
@@ -59,6 +62,8 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         self.collectionView!.register(RatingCollectionViewCell.self, forCellWithReuseIdentifier: ratingCellID)
+        
+         self.collectionView!.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: mapCellID)
 
         self.collectionView!.register(AddressAndRatingCollectionViewCell.self, forCellWithReuseIdentifier: addressAndRating)
         self.collectionView!.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCellID)
@@ -66,6 +71,7 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
     
     private func setupNavigationContoller() {
         self.title = "Property Name"
+        self.navigationController?.navigationBar.topItem?.title = ""
         self.collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 12, right: 0)
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.largeTitleDisplayMode = .never
@@ -110,6 +116,15 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
                 return ratingCell
             } else {
                 numberOfCells = numberOfCells - 1
+            }
+        } else if indexPath.item == 2 {
+            let mapCell = collectionView.dequeueReusableCell(withReuseIdentifier: mapCellID, for: indexPath) as! MapCollectionViewCell
+            if let lat = property?.latitude,
+                let long = property?.longitude {
+               
+                let loaction = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat)!)!, longitude: CLLocationDegrees(exactly: Double(long)!)!)
+                mapCell.location = loaction
+                return mapCell
             }
         }
         cell.backgroundColor = .red
