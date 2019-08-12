@@ -13,11 +13,23 @@ private let cellID = "cellID"
 private let addressAndRating = "addressAndRating"
 private let ratingCellID = "ratingCellID"
 private let mapCellID = "mapCellID"
+private let descriptionCellID = "descriptionCellID"
+private let typeaAndPaymentCellID = "typeaAndPaymentCellID"
+private let polisiesCellID = "polisiesCellID"
+
 
 private let headerCellID = "headerCellID"
 
 class PropertyDetailCollectionViewController: BaseCollectionViewController {
-    var numberOfCells = 4
+    
+    var numberOfCells = 7
+    var textAreaSize: CGFloat = 250.0 {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     var propertyID: String? {
         didSet {
             print(propertyID!)
@@ -49,7 +61,7 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
             }
             self.property = property
             if let images = property?.images {
-//                print(images)
+                //                print(images)
                 self.propertyImages = images
             }
         }
@@ -58,23 +70,30 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationContoller()
-       
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-        self.collectionView!.register(RatingCollectionViewCell.self, forCellWithReuseIdentifier: ratingCellID)
         
-         self.collectionView!.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: mapCellID)
-
+        // Register cells classes
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         self.collectionView!.register(AddressAndRatingCollectionViewCell.self, forCellWithReuseIdentifier: addressAndRating)
+        self.collectionView!.register(RatingCollectionViewCell.self, forCellWithReuseIdentifier: ratingCellID)
+        self.collectionView!.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: mapCellID)
+        self.collectionView!.register(DescriptionCollectionViewCell.self, forCellWithReuseIdentifier: descriptionCellID)
+        self.collectionView!.register(TaypeAndPaymentCollectionViewCell.self, forCellWithReuseIdentifier: typeaAndPaymentCellID)
+        
+        self.collectionView!.register(PolisiesCollectionViewCell.self, forCellWithReuseIdentifier: polisiesCellID)
+        
+        
+        
+        // Register head class
         self.collectionView!.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCellID)
     }
     
     private func setupNavigationContoller() {
-        self.title = "Property Name"
+        self.title = ""
         self.navigationController?.navigationBar.topItem?.title = ""
         self.collectionView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 12, right: 0)
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.largeTitleDisplayMode = .never
+        self.collectionView.backgroundColor = .white
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,31 +133,76 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
                 let ratingCell = collectionView.dequeueReusableCell(withReuseIdentifier: ratingCellID, for: indexPath) as! RatingCollectionViewCell
                 ratingCell.rating = property?.rating
                 return ratingCell
-            } else {
-                numberOfCells = numberOfCells - 1
             }
         } else if indexPath.item == 2 {
             let mapCell = collectionView.dequeueReusableCell(withReuseIdentifier: mapCellID, for: indexPath) as! MapCollectionViewCell
             if let lat = property?.latitude,
                 let long = property?.longitude {
-               
+                
                 let loaction = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat)!)!, longitude: CLLocationDegrees(exactly: Double(long)!)!)
                 mapCell.location = loaction
                 return mapCell
             }
+        } else if indexPath.item == 3 {
+            let descriptionCell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionCellID, for: indexPath) as! DescriptionCollectionViewCell
+            descriptionCell.descriptionLable = property?.description
+            return descriptionCell
+        }  else if indexPath.item == 4 {
+            if property?.type != nil {
+                let typeCell = collectionView.dequeueReusableCell(withReuseIdentifier: typeaAndPaymentCellID, for: indexPath) as! TaypeAndPaymentCollectionViewCell
+                typeCell.typeLable.text = property?.type
+                typeCell.cardPaymentCollectionView.paymentMethods = (property?.paymentMethods)!
+                return typeCell
+            }  else {
+                numberOfCells = numberOfCells - 1
+            }
+        } else if indexPath.item == 5 {
+            if let policies = property?.policies {
+                let policiesCell = collectionView.dequeueReusableCell(withReuseIdentifier: polisiesCellID, for: indexPath) as! PolisiesCollectionViewCell
+                policiesCell.policies = policies
+                return policiesCell
+            }
         }
-        cell.backgroundColor = .red
         return cell
     }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 2 {
+            let mapViewController = MapViewController()
+            
+            if let lat = property?.latitude,
+                let long = property?.longitude {
+                
+                let loaction = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat)!)!, longitude: CLLocationDegrees(exactly: Double(long)!)!)
+                mapViewController.location = loaction
+                mapViewController.property = property
+                let navController = UINavigationController(rootViewController: mapViewController)
+                self.navigationController?.present(navController, animated: true, completion: nil)
+            }
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
             return CGSize.init(width: view.frame.width, height: 150)
         } else if indexPath.item == 1 {
-            return CGSize.init(width: view.frame.width, height: 250)
+            if property?.rating != nil {
+                return CGSize.init(width: view.frame.width, height: 250)
+            } else {
+                return CGSize.init(width: 0, height: 0)
+            }
+        } else if indexPath.item == 3 {
+            // get an estimatedSize height for the cell
+            let dummyCell = DescriptionCollectionViewCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 1000))
+            dummyCell.textArea.text = property?.description
+            dummyCell.layoutIfNeeded()
+            let estimatedSize = dummyCell.systemLayoutSizeFitting(CGSize.init(width: view.frame.width, height: 1000))
+            print("estimatedSize.height: \(estimatedSize.height)")
+            return CGSize.init(width: view.frame.width, height: estimatedSize.height)
         } else {
-            return CGSize.init(width: view.frame.width, height: 200)
-            
+            return CGSize.init(width: view.frame.width, height: 150)
         }
     }
     

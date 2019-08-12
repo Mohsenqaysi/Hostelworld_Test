@@ -30,7 +30,6 @@ class MainCollectionViewController: BaseCollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationContoller()
         
         // Register cell classes
         self.collectionView!.register(PropertyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -47,12 +46,18 @@ class MainCollectionViewController: BaseCollectionViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupNavigationContoller()
+    }
+    
     private func setupNavigationContoller() {
         self.title = "Properties"
         self.collectionView.contentInset = UIEdgeInsets.init(top: 12, left: 0, bottom: 12, right: 0)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .automatic
     }
+    
 }
 
 extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
