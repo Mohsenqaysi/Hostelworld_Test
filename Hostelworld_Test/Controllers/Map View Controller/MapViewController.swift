@@ -11,25 +11,27 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
-    let mapView = MKMapView()
     
-    var location: CLLocationCoordinate2D! {
-        didSet {
-            mapView.isUserInteractionEnabled = true
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: 200, longitudinalMeters: 200)
-            mapView.setRegion(region, animated: false)
-            view.addSubview(mapView)
-            mapView.frame = view.frame
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = location
-            mapView.addAnnotation(annotation)
-        }
-    }
+    var location: CLLocationCoordinate2D!
     
     var property: Hostel? {
         didSet {
-            setupDirectionsView()
+            if let lat = property?.latitude,
+                let long = property?.longitude {
+                let mapView = MKMapView()
+                let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat)!)!, longitude: CLLocationDegrees(exactly: Double(long)!)!)
+                self.location = location
+                mapView.isUserInteractionEnabled = true
+                let region = MKCoordinateRegion(center: location, latitudinalMeters: 200, longitudinalMeters: 200)
+                mapView.setRegion(region, animated: false)
+//                view.addSubview(mapView)
+
+                                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = location
+                mapView.addAnnotation(annotation)
+                setupDirectionsView(mapView: mapView)
+            }
         }
     }
     
@@ -48,21 +50,30 @@ class MapViewController: UIViewController {
         self.title = "Map"
     }
     
-    func setupDirectionsView() {
+    func setupDirectionsView(mapView: MKMapView) {
+        var VStack: VirticalStackView!
         if let directionText = property?.directions, property?.directions != "" {
             print("directionText: ", directionText)
             let directionsView = UIView()
             directionsView.backgroundColor = .white
-            mapView.addSubview(directionsView)
             
+            
+            VStack = VirticalStackView(arrangedSubviews: [mapView,directionsView], spacing: 0, distribution: .fillEqually)
+            view.addSubview(VStack)
+
             let directionLable = UILabel(text: "", color: .lightGray, fontStyle: .systemFont(ofSize: 18))
             directionLable.numberOfLines = 0
             directionLable.text = directionText
             
-            directionsView.anchor(top: nil, left: mapView.leftAnchor, bottom: mapView.bottomAnchor, right: mapView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 400)
-            
             directionsView.addSubview(directionLable)
             directionLable.anchor(top: directionsView.topAnchor, left: directionsView.leftAnchor, bottom: directionsView.bottomAnchor, right: directionsView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 12, paddingRight: 12, width: 0, height: 0)
+            
+            VStack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        } else {
+            // if the no directions fill the view with the map
+            VStack = VirticalStackView(arrangedSubviews: [mapView], spacing: 0, distribution: .fillEqually)
+            view.addSubview(VStack)
+            VStack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         }
     }
     

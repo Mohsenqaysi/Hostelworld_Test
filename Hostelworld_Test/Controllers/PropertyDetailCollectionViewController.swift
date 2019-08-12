@@ -151,7 +151,9 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
             if property?.type != nil {
                 let typeCell = collectionView.dequeueReusableCell(withReuseIdentifier: typeaAndPaymentCellID, for: indexPath) as! TaypeAndPaymentCollectionViewCell
                 typeCell.typeLable.text = property?.type
-                typeCell.cardPaymentCollectionView.paymentMethods = (property?.paymentMethods)!
+                if let paymentMethods = property?.paymentMethods {
+                    typeCell.cardPaymentCollectionView.paymentMethods = paymentMethods
+                }
                 return typeCell
             }  else {
                 numberOfCells = numberOfCells - 1
@@ -170,16 +172,10 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == 2 {
             let mapViewController = MapViewController()
+            mapViewController.property = property
+            let navController = UINavigationController(rootViewController: mapViewController)
+            self.navigationController?.present(navController, animated: true, completion: nil)
             
-            if let lat = property?.latitude,
-                let long = property?.longitude {
-                
-                let loaction = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat)!)!, longitude: CLLocationDegrees(exactly: Double(long)!)!)
-                mapViewController.location = loaction
-                mapViewController.property = property
-                let navController = UINavigationController(rootViewController: mapViewController)
-                self.navigationController?.present(navController, animated: true, completion: nil)
-            }
         }
     }
     

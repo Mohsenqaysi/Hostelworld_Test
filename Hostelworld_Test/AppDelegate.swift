@@ -18,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window?.rootViewController = UINavigationController(rootViewController: MainCollectionViewController())
+        setUpAppearance()
         return true
+    }
+    fileprivate func setUpAppearance(){
+        UINavigationBar.appearance().barTintColor = .white
+        UINavigationBar.appearance().tintColor = #colorLiteral(red: 1, green: 0.4712502394, blue: 0.3008903339, alpha: 1)
+        UINavigationBar.appearance().isTranslucent = false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

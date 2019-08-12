@@ -48,14 +48,4 @@ class HostelWorldAPI {
             }
             }.resume()
     }
-    
-    fileprivate func prepareRequest(urlString: String)-> URLRequest{
-        // create GET request
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        return request
-    }
 }
