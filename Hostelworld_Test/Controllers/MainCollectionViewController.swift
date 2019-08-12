@@ -12,25 +12,65 @@ private let reuseIdentifier = "Cell"
 
 class MainCollectionViewController: BaseCollectionViewController {
     
+    var allProperties = [Property](){
+        didSet{
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    let noDataView: UIView = {
+        let view = UIView()
+        let noDataLable = UILabel(text: "Please check that you have an internet connection 😊", color: .black, fontStyle: .boldSystemFont(ofSize: 18))
+        view.addSubview(noDataLable)
+        view.anchor(top:view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 18, paddingLeft: 18, paddingBottom: 18, paddingRight: 18, width: 0, height: 0)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.contentInset = UIEdgeInsets.init(top: 12, left: 0, bottom: 12, right: 0)
+        setupNavigationContoller()
         
         // Register cell classes
         self.collectionView!.register(PropertyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        HostelWorldAPI.shared.getAllPropertiesFeed { (properties, error) in
+            if let error = error {
+                print("Failed to fetch data: \(error)")
+            }
+            properties?.properties.forEach({ (property) in
+//                print("properties: \(property)")
+                self.allProperties.append(property)
+//                print("========================")
+            })
+        }
+    }
+    
+    private func setupNavigationContoller() {
+        self.title = "Properties"
+        self.collectionView.contentInset = UIEdgeInsets.init(top: 12, left: 0, bottom: 12, right: 0)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .automatic
     }
 }
 
 extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 10
+        return allProperties.count > 0 ? allProperties.count : 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PropertyCollectionViewCell
+        cell.property = allProperties[indexPath.item]
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailView = PropertyDetailCollectionViewController()
+        detailView.propertyID = allProperties[indexPath.item].id
+        self.navigationController?.pushViewController(detailView, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -40,4 +80,5 @@ extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat.init(10)
     }
+    
 }

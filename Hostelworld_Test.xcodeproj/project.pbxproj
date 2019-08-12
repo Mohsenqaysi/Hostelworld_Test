@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FC07E70722FDA655001FF593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E70622FDA654001FF593 /* AppDelegate.swift */; };
 		FC07E70C22FDA655001FF593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC07E70A22FDA655001FF593 /* Main.storyboard */; };
-		FC07E70E22FDA659001FF593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC07E70D22FDA659001FF593 /* Assets.xcassets */; };
 		FC07E71122FDA659001FF593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC07E70F22FDA659001FF593 /* LaunchScreen.storyboard */; };
 		FC07E71C22FDA65A001FF593 /* Hostelworld_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E71B22FDA65A001FF593 /* Hostelworld_TestTests.swift */; };
 		FC07E72722FDA65A001FF593 /* Hostelworld_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E72622FDA65A001FF593 /* Hostelworld_TestUITests.swift */; };
@@ -22,6 +21,16 @@
 		FC07E74722FDA828001FF593 /* Data+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E73E22FDA828001FF593 /* Data+Format.swift */; };
 		FC07E74922FDA97F001FF593 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */; };
 		FC07E74D22FDABF3001FF593 /* PropertyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */; };
+		FC840D07230170E100FDD7FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC840D06230170E100FDD7FF /* Assets.xcassets */; };
+		FC9AF9BF22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9AF9BE22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift */; };
+		FCA1B36B22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B36A22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift */; };
+		FCA1B36E22FE0BB6008AF010 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B36D22FE0BB6008AF010 /* HeaderCollectionReusableView.swift */; };
+		FCA1B37122FE1224008AF010 /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B37022FE1224008AF010 /* HeaderCollectionViewController.swift */; };
+		FCA1B37422FE19C6008AF010 /* PropertyImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B37322FE19C6008AF010 /* PropertyImageCollectionViewCell.swift */; };
+		FCA1B37622FE2249008AF010 /* SnapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B37522FE2249008AF010 /* SnapLayout.swift */; };
+		FCA1B37822FE2570008AF010 /* Hostel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B37722FE2570008AF010 /* Hostel.swift */; };
+		FCBB49A922FDCA6A00F4E02F /* HostelWorldAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBB49A822FDCA6A00F4E02F /* HostelWorldAPI.swift */; };
+		FCBB49AC22FDCB1500F4E02F /* AllProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBB49AB22FDCB1500F4E02F /* AllProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +54,6 @@
 		FC07E70322FDA654001FF593 /* Hostelworld_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hostelworld_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC07E70622FDA654001FF593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC07E70B22FDA655001FF593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FC07E70D22FDA659001FF593 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC07E71022FDA659001FF593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC07E71222FDA659001FF593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC07E71722FDA65A001FF593 /* Hostelworld_TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hostelworld_TestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +71,16 @@
 		FC07E73E22FDA828001FF593 /* Data+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Format.swift"; sourceTree = "<group>"; };
 		FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC840D06230170E100FDD7FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC9AF9BE22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAndRatingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCA1B36A22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailCollectionViewController.swift; sourceTree = "<group>"; };
+		FCA1B36D22FE0BB6008AF010 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		FCA1B37022FE1224008AF010 /* HeaderCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewController.swift; sourceTree = "<group>"; };
+		FCA1B37322FE19C6008AF010 /* PropertyImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCA1B37522FE2249008AF010 /* SnapLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapLayout.swift; sourceTree = "<group>"; };
+		FCA1B37722FE2570008AF010 /* Hostel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hostel.swift; sourceTree = "<group>"; };
+		FCBB49A822FDCA6A00F4E02F /* HostelWorldAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostelWorldAPI.swift; sourceTree = "<group>"; };
+		FCBB49AB22FDCB1500F4E02F /* AllProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProperties.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				FC07E70522FDA654001FF593 /* Hostelworld_Test */,
+				FC840D06230170E100FDD7FF /* Assets.xcassets */,
 				FC07E71A22FDA65A001FF593 /* Hostelworld_TestTests */,
 				FC07E72522FDA65A001FF593 /* Hostelworld_TestUITests */,
 				FC07E70422FDA654001FF593 /* Products */,
@@ -113,12 +132,13 @@
 		FC07E70522FDA654001FF593 /* Hostelworld_Test */ = {
 			isa = PBXGroup;
 			children = (
-				FC07E74A22FDAA79001FF593 /* Views */,
 				FC07E70622FDA654001FF593 /* AppDelegate.swift */,
 				FC07E73522FDA828001FF593 /* Helpers */,
+				FCBB49A722FDCA1300F4E02F /* Service */,
+				FCBB49AA22FDCA8D00F4E02F /* Model */,
+				FC07E74A22FDAA79001FF593 /* Views */,
 				FC07E73422FDA7EF001FF593 /* Controllers */,
 				FC07E70A22FDA655001FF593 /* Main.storyboard */,
-				FC07E70D22FDA659001FF593 /* Assets.xcassets */,
 				FC07E70F22FDA659001FF593 /* LaunchScreen.storyboard */,
 				FC07E71222FDA659001FF593 /* Info.plist */,
 			);
@@ -146,7 +166,9 @@
 		FC07E73422FDA7EF001FF593 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCA1B36F22FE11F8008AF010 /* Header Controller */,
 				FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */,
+				FCA1B36A22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -168,6 +190,8 @@
 		FC07E74A22FDAA79001FF593 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FC9AF9BD22FF246700850F31 /* Address Cell */,
+				FCA1B36C22FE0BA1008AF010 /* Header Cell */,
 				FC07E74B22FDABC4001FF593 /* Property Cell */,
 			);
 			path = Views;
@@ -179,6 +203,57 @@
 				FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */,
 			);
 			path = "Property Cell";
+			sourceTree = "<group>";
+		};
+		FC9AF9BD22FF246700850F31 /* Address Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC9AF9BE22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift */,
+			);
+			path = "Address Cell";
+			sourceTree = "<group>";
+		};
+		FCA1B36C22FE0BA1008AF010 /* Header Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FCA1B37222FE199E008AF010 /* Image Cell */,
+				FCA1B36D22FE0BB6008AF010 /* HeaderCollectionReusableView.swift */,
+				FCA1B37522FE2249008AF010 /* SnapLayout.swift */,
+			);
+			path = "Header Cell";
+			sourceTree = "<group>";
+		};
+		FCA1B36F22FE11F8008AF010 /* Header Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FCA1B37022FE1224008AF010 /* HeaderCollectionViewController.swift */,
+			);
+			path = "Header Controller";
+			sourceTree = "<group>";
+		};
+		FCA1B37222FE199E008AF010 /* Image Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FCA1B37322FE19C6008AF010 /* PropertyImageCollectionViewCell.swift */,
+			);
+			path = "Image Cell";
+			sourceTree = "<group>";
+		};
+		FCBB49A722FDCA1300F4E02F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FCBB49A822FDCA6A00F4E02F /* HostelWorldAPI.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FCBB49AA22FDCA8D00F4E02F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCBB49AB22FDCB1500F4E02F /* AllProperties.swift */,
+				FCA1B37722FE2570008AF010 /* Hostel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC07E71122FDA659001FF593 /* LaunchScreen.storyboard in Resources */,
-				FC07E70E22FDA659001FF593 /* Assets.xcassets in Resources */,
+				FC840D07230170E100FDD7FF /* Assets.xcassets in Resources */,
 				FC07E70C22FDA655001FF593 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,16 +387,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA1B37822FE2570008AF010 /* Hostel.swift in Sources */,
+				FCA1B36E22FE0BB6008AF010 /* HeaderCollectionReusableView.swift in Sources */,
+				FCBB49AC22FDCB1500F4E02F /* AllProperties.swift in Sources */,
 				FC07E73F22FDA828001FF593 /* BaseCollectionViewController.swift in Sources */,
 				FC07E74322FDA828001FF593 /* CustomColors.swift in Sources */,
 				FC07E74422FDA828001FF593 /* Extensions.swift in Sources */,
 				FC07E74522FDA828001FF593 /* CellsKeys.swift in Sources */,
 				FC07E74922FDA97F001FF593 /* MainCollectionViewController.swift in Sources */,
+				FCA1B36B22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift in Sources */,
+				FCA1B37622FE2249008AF010 /* SnapLayout.swift in Sources */,
+				FCA1B37122FE1224008AF010 /* HeaderCollectionViewController.swift in Sources */,
 				FC07E74122FDA828001FF593 /* VirticalStackView.swift in Sources */,
+				FCBB49A922FDCA6A00F4E02F /* HostelWorldAPI.swift in Sources */,
 				FC07E74D22FDABF3001FF593 /* PropertyCollectionViewCell.swift in Sources */,
 				FC07E74722FDA828001FF593 /* Data+Format.swift in Sources */,
 				FC07E70722FDA655001FF593 /* AppDelegate.swift in Sources */,
 				FC07E74222FDA828001FF593 /* BaseCollectionViewCell.swift in Sources */,
+				FC9AF9BF22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift in Sources */,
+				FCA1B37422FE19C6008AF010 /* PropertyImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
