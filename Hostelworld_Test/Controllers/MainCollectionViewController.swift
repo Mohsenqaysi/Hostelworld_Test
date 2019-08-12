@@ -12,6 +12,15 @@ private let reuseIdentifier = "Cell"
 
 class MainCollectionViewController: BaseCollectionViewController {
     
+    let activityIndicotorView: UIActivityIndicatorView  = {
+        let activity = UIActivityIndicatorView(style: .whiteLarge)
+        activity.startAnimating()
+        activity.color = #colorLiteral(red: 1, green: 0.4712502394, blue: 0.3008903339, alpha: 1)
+        activity.backgroundColor = UIColor.white
+        activity.hidesWhenStopped = true
+        return activity
+    }()
+    
     var allProperties = [Property](){
         didSet{
             DispatchQueue.main.async {
@@ -30,19 +39,25 @@ class MainCollectionViewController: BaseCollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collectionView.backgroundColor = .white
+//        self.view.addSubview(activityIndicotorView)
+        self.navigationController?.view.addSubview(activityIndicotorView)
+        activityIndicotorView.center = view.center
+
         // Register cell classes
         self.collectionView!.register(PropertyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        HostelWorldAPI.shared.getAllPropertiesFeed { (properties, error) in
-            if let error = error {
-                print("Failed to fetch data: \(error)")
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) {
+            HostelWorldAPI.shared.getAllPropertiesFeed { (properties, error) in
+                if let error = error {
+                    print("Failed to fetch data: \(error)")
+                }
+                properties?.properties.forEach({ (property) in
+                    //                print("properties: \(property)")
+                    self.allProperties.append(property)
+                    //                print("========================")
+                })
             }
-            properties?.properties.forEach({ (property) in
-//                print("properties: \(property)")
-                self.allProperties.append(property)
-//                print("========================")
-            })
+            self.activityIndicotorView.stopAnimating()
         }
     }
     

@@ -21,8 +21,16 @@ private let polisiesCellID = "polisiesCellID"
 private let headerCellID = "headerCellID"
 
 class PropertyDetailCollectionViewController: BaseCollectionViewController {
+    let activityIndicotorView: UIActivityIndicatorView  = {
+        let activity = UIActivityIndicatorView(style: .whiteLarge)
+        activity.startAnimating()
+        activity.color = #colorLiteral(red: 1, green: 0.4712502394, blue: 0.3008903339, alpha: 1)
+        activity.backgroundColor = UIColor.white
+        activity.hidesWhenStopped = true
+        return activity
+    }()
     
-    var numberOfCells = 7
+    var numberOfCells = 0
     var textAreaSize: CGFloat = 250.0 {
         didSet {
             DispatchQueue.main.async {
@@ -55,21 +63,26 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
     }
     
     fileprivate func fetchPropertyData(ID: String){
-        HostelWorldAPI.shared.getPropertyData(withID: ID) { (property, error) in
-            if let error = error {
-                print("Fialed to fetch property data with ID: \(ID) error: \(error)")
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) {
+            HostelWorldAPI.shared.getPropertyData(withID: ID) { (property, error) in
+                if let error = error {
+                    print("Fialed to fetch property data with ID: \(ID) error: \(error)")
+                }
+                self.property = property
+                if let images = property?.images {
+                    //                print(images)
+                    self.propertyImages = images
+                }
             }
-            self.property = property
-            if let images = property?.images {
-                //                print(images)
-                self.propertyImages = images
-            }
+            self.numberOfCells = 7
+            self.activityIndicotorView.stopAnimating()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationContoller()
+        self.navigationController?.view.addSubview(activityIndicotorView)
+        activityIndicotorView.center = view.center
         
         // Register cells classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
@@ -80,8 +93,6 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
         self.collectionView!.register(TaypeAndPaymentCollectionViewCell.self, forCellWithReuseIdentifier: typeaAndPaymentCellID)
         
         self.collectionView!.register(PolisiesCollectionViewCell.self, forCellWithReuseIdentifier: polisiesCellID)
-        
-        
         
         // Register head class
         self.collectionView!.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCellID)
@@ -94,6 +105,12 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.largeTitleDisplayMode = .never
         self.collectionView.backgroundColor = .white
+        self.navigationController?.view.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupNavigationContoller()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

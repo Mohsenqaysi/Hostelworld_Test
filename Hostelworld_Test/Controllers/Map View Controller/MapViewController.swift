@@ -61,8 +61,11 @@ class MapViewController: UIViewController {
             VStack = VirticalStackView(arrangedSubviews: [mapView,directionsView], spacing: 0, distribution: .fillEqually)
             view.addSubview(VStack)
 
-            let directionLable = UILabel(text: "", color: .lightGray, fontStyle: .systemFont(ofSize: 18))
-            directionLable.numberOfLines = 0
+            let directionLable = UITextView()
+//                UILabel(text: "", color: .lightGray, fontStyle: .systemFont(ofSize: 18))
+//            directionLable.numberOfLines = 0
+            directionLable.font = .systemFont(ofSize: 20)
+            directionLable.isUserInteractionEnabled = false
             directionLable.text = directionText
             
             directionsView.addSubview(directionLable)
