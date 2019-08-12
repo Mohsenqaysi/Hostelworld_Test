@@ -14,6 +14,7 @@ private let ratingCellID = "ratingCellID"
 private let headerCellID = "headerCellID"
 
 class PropertyDetailCollectionViewController: BaseCollectionViewController {
+    var numberOfCells = 4
     var propertyID: String? {
         didSet {
             print(propertyID!)
@@ -57,7 +58,7 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
        
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ratingCellID)
+        self.collectionView!.register(RatingCollectionViewCell.self, forCellWithReuseIdentifier: ratingCellID)
 
         self.collectionView!.register(AddressAndRatingCollectionViewCell.self, forCellWithReuseIdentifier: addressAndRating)
         self.collectionView!.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCellID)
@@ -92,7 +93,7 @@ extension PropertyDetailCollectionViewController {
 extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return numberOfCells > 0 ? numberOfCells : 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,9 +105,11 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
             return addressCell
         } else if indexPath.item == 1  {
             if property?.rating != nil {
-                let ratingCell = collectionView.dequeueReusableCell(withReuseIdentifier: ratingCellID, for: indexPath)
-                ratingCell.backgroundColor = .green
+                let ratingCell = collectionView.dequeueReusableCell(withReuseIdentifier: ratingCellID, for: indexPath) as! RatingCollectionViewCell
+                ratingCell.rating = property?.rating
                 return ratingCell
+            } else {
+                numberOfCells = numberOfCells - 1
             }
         }
         cell.backgroundColor = .red

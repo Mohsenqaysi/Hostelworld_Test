@@ -22,6 +22,7 @@
 		FC07E74922FDA97F001FF593 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */; };
 		FC07E74D22FDABF3001FF593 /* PropertyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */; };
 		FC840D07230170E100FDD7FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC840D06230170E100FDD7FF /* Assets.xcassets */; };
+		FC840D0A2301798B00FDD7FF /* RatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC840D092301798B00FDD7FF /* RatingCollectionViewCell.swift */; };
 		FC9AF9BF22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9AF9BE22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift */; };
 		FCA1B36B22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B36A22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift */; };
 		FCA1B36E22FE0BB6008AF010 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1B36D22FE0BB6008AF010 /* HeaderCollectionReusableView.swift */; };
@@ -72,6 +73,7 @@
 		FC07E74822FDA97F001FF593 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC840D06230170E100FDD7FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC840D092301798B00FDD7FF /* RatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC9AF9BE22FF249F00850F31 /* AddressAndRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAndRatingCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCA1B36A22FE07AA008AF010 /* PropertyDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		FCA1B36D22FE0BB6008AF010 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		FC07E74A22FDAA79001FF593 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FC840D082301796200FDD7FF /* Rating Cell */,
 				FC9AF9BD22FF246700850F31 /* Address Cell */,
 				FCA1B36C22FE0BA1008AF010 /* Header Cell */,
 				FC07E74B22FDABC4001FF593 /* Property Cell */,
@@ -203,6 +206,14 @@
 				FC07E74C22FDABF3001FF593 /* PropertyCollectionViewCell.swift */,
 			);
 			path = "Property Cell";
+			sourceTree = "<group>";
+		};
+		FC840D082301796200FDD7FF /* Rating Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC840D092301798B00FDD7FF /* RatingCollectionViewCell.swift */,
+			);
+			path = "Rating Cell";
 			sourceTree = "<group>";
 		};
 		FC9AF9BD22FF246700850F31 /* Address Cell */ = {
@@ -400,6 +411,7 @@
 				FCA1B37122FE1224008AF010 /* HeaderCollectionViewController.swift in Sources */,
 				FC07E74122FDA828001FF593 /* VirticalStackView.swift in Sources */,
 				FCBB49A922FDCA6A00F4E02F /* HostelWorldAPI.swift in Sources */,
+				FC840D0A2301798B00FDD7FF /* RatingCollectionViewCell.swift in Sources */,
 				FC07E74D22FDABF3001FF593 /* PropertyCollectionViewCell.swift in Sources */,
 				FC07E74722FDA828001FF593 /* Data+Format.swift in Sources */,
 				FC07E70722FDA655001FF593 /* AppDelegate.swift in Sources */,
