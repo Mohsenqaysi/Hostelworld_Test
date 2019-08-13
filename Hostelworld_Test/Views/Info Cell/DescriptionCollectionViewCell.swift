@@ -19,7 +19,7 @@ class DescriptionCollectionViewCell: BaseCollectionViewCell {
                 textArea.font = UIFont.systemFont(ofSize: 16)
                 textArea.textColor = .darkGray
                 addSubview(textArea)
-                textArea.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 8, paddingRight: 12, width: 0, height: 0)
+                textArea.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 4, paddingRight: 12, width: 0, height: 0)
                 print("descriptionLable: \(String(describing: descriptionLable))")
             }
         }

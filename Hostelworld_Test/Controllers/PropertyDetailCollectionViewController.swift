@@ -205,9 +205,9 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
                 let textEstimatedWidthSize = CGSize(width: view.frame.width - 12 - 12 - 8 - 12, height: 1500)
                 let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
                 let estimatedFrameSize = NSString(string: description).boundingRect(with: textEstimatedWidthSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-                return CGSize.init(width: view.frame.width, height: estimatedFrameSize.height + 55)
+                return CGSize.init(width: view.frame.width, height: estimatedFrameSize.height + 60)
             } else {
-                return CGSize.init(width: view.frame.width, height: 500)
+                return CGSize.init(width: view.frame.width, height: 0)
             }
         } else {
             return CGSize.init(width: view.frame.width, height: 150)
