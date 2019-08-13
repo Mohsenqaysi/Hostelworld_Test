@@ -27,12 +27,6 @@ class Hostelworld_TestUITests: XCTestCase {
     }
     
     
-    func testExample() {
-        
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
     func testFristCell() {
         let app = XCUIApplication()
         let collectionViewsQuery = app.collectionViews
@@ -43,7 +37,7 @@ class Hostelworld_TestUITests: XCTestCase {
         let element = collectionViewsQuery.otherElements.collectionViews.cells.children(matching: .other).element
         element.swipeLeft()
         
-        // check id the data were set correctlly on the detial view
+        // Check id the data were set correctlly on the detial view
         app.navigationBars["STF Vandrarhem Stigbergsliden"].otherElements["STF Vandrarhem Stigbergsliden"].tap()
         XCTAssertTrue(collectionViewsQuery.staticTexts["STF Vandrarhem Stigbergsliden"].exists)
         XCTAssertTrue(collectionViewsQuery.staticTexts["Stigbergsliden 10  Gothenburg Sweden"].exists)
@@ -52,8 +46,16 @@ class Hostelworld_TestUITests: XCTestCase {
         app.swipeUp()
         app.swipeUp()
         
-       XCTAssertTrue(collectionViewsQuery.staticTexts["• Child Friendly\n• Credit Cards Accepted\n• No Curfew\n• Non Smoking\n• Pet Friendly\n• Taxes Included\n"].exists)
+        let hostelStaticText = collectionViewsQuery.staticTexts["HOSTEL"]
+        XCTAssertTrue(hostelStaticText.exists)
         
+        // check payment methods and cards types
+        XCTAssertTrue(collectionViewsQuery.cells.containing(.staticText, identifier:"Payment Methons").children(matching: .other).element(boundBy: 3).children(matching: .collectionView).element.exists)
+    
+        XCTAssertTrue(collectionViewsQuery.cells.containing(.image, identifier:"Mastercard").children(matching: .other).element.exists)
+        XCTAssertTrue(collectionViewsQuery.cells.containing(.image, identifier:"Visa").children(matching: .other).element.exists)
+        
+        XCTAssertTrue(collectionViewsQuery.staticTexts["• Child Friendly\n• Credit Cards Accepted\n• No Curfew\n• Non Smoking\n• Pet Friendly\n• Taxes Included\n"].exists)
     }
     
     func testFristCellMapView() {
@@ -63,7 +65,7 @@ class Hostelworld_TestUITests: XCTestCase {
         collectionViewsQuery.children(matching: .cell).element(boundBy: 0).children(matching: .other).element(boundBy: 0).tap()
         collectionViewsQuery.cells.otherElements.containing(.link, identifier:"Legal").children(matching: .other).element.children(matching: .map).element.tap()
         
-           let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textView).element
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .textView).element
         
         if let value = textView.value as? String {
             XCTAssertEqual(value,"Public transportation: Take the tram number 3, 9 or 11 to 'Stigbergstorget', it takes about 10 min from the centralstation. Walk back down the hill app 100m, the hostel will be on your right side.\r\n\r\nCar: Drive towards 'centrum'. Follow the signs towards 'Fredrikshavn'. Chose exit 'Fiskhamnsmotet' and follow the sign to 'Majorna'. Turn left at the first traffic light to Karl Johansgatan and continue up the hill and down again, the street has now changed name to 'Stigbergsliden'. You find us on nr 10.")

@@ -20,7 +20,7 @@ class TaypeAndPaymentCollectionViewCell: BaseCollectionViewCell {
     }
     
     let propertyType = UILabel(text: "Property Type", color: .lightGray, fontStyle: .systemFont(ofSize: 16))
-    let typeLable = UILabel(text: "Property Type", color: .darkGray, fontStyle: .systemFont(ofSize: 16))
+    let typeLable = UILabel(text: "Property Lable Type", color: .darkGray, fontStyle: .systemFont(ofSize: 16))
     
     lazy var lineOne = UIView().getLine(width: 0, color: UIColor(white: 0.95, alpha: 1))
     let paymentLable = UILabel(text: "Payment Methons", color: .darkGray, fontStyle: .systemFont(ofSize: 16))
