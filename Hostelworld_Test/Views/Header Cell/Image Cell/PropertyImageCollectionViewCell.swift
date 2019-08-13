@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PropertyImageCollectionViewCell: UICollectionViewCell {
+class PropertyImageCollectionViewCell: BaseCollectionViewCell {
     var imageURL: String! {
         didSet {
 //            print("imageURL: \(imageURL!)")
@@ -18,17 +18,7 @@ class PropertyImageCollectionViewCell: UICollectionViewCell {
     
     let image = UIImageView.getUIImageView(image: #imageLiteral(resourceName: "logo"), contentMode: .scaleAspectFit)
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpViews()
-        backgroundColor = .white
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setUpViews() {
+    override func setUpViews() {
         addSubview(image)
         image.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardPaymentCollectionViewCell: UICollectionViewCell {
+class CardPaymentCollectionViewCell: BaseCollectionViewCell {
     var imageName: String! {
         didSet {
             let imageView = UIImageView()
@@ -21,13 +21,5 @@ class CardPaymentCollectionViewCell: UICollectionViewCell {
             addSubview(imageView)
             imageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 8, paddingRight: 12, width: 0, height: 0)
         }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

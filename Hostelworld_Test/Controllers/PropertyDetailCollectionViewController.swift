@@ -70,11 +70,10 @@ class PropertyDetailCollectionViewController: BaseCollectionViewController {
                 }
                 self.property = property
                 if let images = property?.images {
-                    //                print(images)
                     self.propertyImages = images
                 }
             }
-            self.numberOfCells = 7
+            self.numberOfCells = 6
             self.activityIndicotorView.stopAnimating()
         }
     }
@@ -153,13 +152,8 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
             }
         } else if indexPath.item == 2 {
             let mapCell = collectionView.dequeueReusableCell(withReuseIdentifier: mapCellID, for: indexPath) as! MapCollectionViewCell
-            if let lat = property?.latitude,
-                let long = property?.longitude {
-                
-                let loaction = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat)!)!, longitude: CLLocationDegrees(exactly: Double(long)!)!)
-                mapCell.location = loaction
+                mapCell.property = property
                 return mapCell
-            }
         } else if indexPath.item == 3 {
             let descriptionCell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionCellID, for: indexPath) as! DescriptionCollectionViewCell
             descriptionCell.descriptionLable = property?.description
@@ -167,10 +161,7 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
         }  else if indexPath.item == 4 {
             if property?.type != nil {
                 let typeCell = collectionView.dequeueReusableCell(withReuseIdentifier: typeaAndPaymentCellID, for: indexPath) as! TaypeAndPaymentCollectionViewCell
-                typeCell.typeLable.text = property?.type
-                if let paymentMethods = property?.paymentMethods {
-                    typeCell.cardPaymentCollectionView.paymentMethods = paymentMethods
-                }
+                typeCell.property = property
                 return typeCell
             }  else {
                 numberOfCells = numberOfCells - 1
@@ -180,8 +171,11 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
                 let policiesCell = collectionView.dequeueReusableCell(withReuseIdentifier: polisiesCellID, for: indexPath) as! PolisiesCollectionViewCell
                 policiesCell.policies = policies
                 return policiesCell
+            } else {
+               numberOfCells = numberOfCells - 1
             }
         }
+        cell.backgroundColor = .red
         return cell
     }
     
@@ -196,7 +190,6 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
         }
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
             return CGSize.init(width: view.frame.width, height: 150)
@@ -208,12 +201,14 @@ extension PropertyDetailCollectionViewController: UICollectionViewDelegateFlowLa
             }
         } else if indexPath.item == 3 {
             // get an estimatedSize height for the cell
-            let dummyCell = DescriptionCollectionViewCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 1000))
-            dummyCell.textArea.text = property?.description
-            dummyCell.layoutIfNeeded()
-            let estimatedSize = dummyCell.systemLayoutSizeFitting(CGSize.init(width: view.frame.width, height: 1000))
-            print("estimatedSize.height: \(estimatedSize.height)")
-            return CGSize.init(width: view.frame.width, height: estimatedSize.height)
+            if let description = property?.description {
+                let textEstimatedWidthSize = CGSize(width: view.frame.width - 12 - 12 - 8 - 12, height: 1500)
+                let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
+                let estimatedFrameSize = NSString(string: description).boundingRect(with: textEstimatedWidthSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                return CGSize.init(width: view.frame.width, height: estimatedFrameSize.height + 55)
+            } else {
+                return CGSize.init(width: view.frame.width, height: 500)
+            }
         } else {
             return CGSize.init(width: view.frame.width, height: 150)
         }

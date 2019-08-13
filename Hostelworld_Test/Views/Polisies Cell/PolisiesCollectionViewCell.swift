@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PolisiesCollectionViewCell: UICollectionViewCell {
+class PolisiesCollectionViewCell: BaseCollectionViewCell {
     
     var policies: [String]! {
         didSet {
@@ -25,18 +25,8 @@ class PolisiesCollectionViewCell: UICollectionViewCell {
     let policyLable = UILabel(text: "POLICIES", color: .darkGray, fontStyle: .systemFont(ofSize: 18))
     let policyIcon = UIImageView.getUIImageView(image: #imageLiteral(resourceName: "policies"), contentMode: .scaleAspectFit)
     let policyList = UILabel(text: "", color: .darkGray, fontStyle: .systemFont(ofSize: 18))
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-        
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupViews() {
+    override func setUpViews() {
         policyIcon.setViewCGRect(width: 24, height: 24)
         let VPolicesStackView = UIStackView(arrangedSubviews: [policyIcon,policyLable])
         VPolicesStackView.spacing = 8
@@ -46,6 +36,6 @@ class PolisiesCollectionViewCell: UICollectionViewCell {
 
         policyList.numberOfLines = 0
         addSubview(policyList)
-        policyList.anchor(top: VPolicesStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        policyList.anchor(top: VPolicesStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
 }

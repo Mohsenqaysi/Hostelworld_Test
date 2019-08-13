@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddressAndRatingCollectionViewCell: UICollectionViewCell {
+class AddressAndRatingCollectionViewCell: BaseCollectionViewCell {
     var property: Hostel? {
         didSet {
             if let address1 = property?.address1, let address2 = property?.address2, let cityName = property?.city?.name, let country = property?.city?.country {
@@ -40,16 +40,8 @@ class AddressAndRatingCollectionViewCell: UICollectionViewCell {
     }()
     lazy var lineTwo = UIView().getLine(width: 0)
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpViews()
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setUpViews() {
+    override func setUpViews() {
         backgroundColor = .white
         address.numberOfLines = 2
         

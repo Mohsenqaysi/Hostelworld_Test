@@ -8,7 +8,8 @@
 
 import UIKit
 
-class DescriptionCollectionViewCell: UICollectionViewCell {
+class DescriptionCollectionViewCell: BaseCollectionViewCell {
+   
     let textArea = UILabel()
     var descriptionLable: String! {
         didSet {
@@ -18,17 +19,9 @@ class DescriptionCollectionViewCell: UICollectionViewCell {
                 textArea.font = UIFont.systemFont(ofSize: 16)
                 textArea.textColor = .darkGray
                 addSubview(textArea)
-                textArea.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 8, paddingRight: 12, width: 0, height: 0)
+                textArea.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 8, paddingRight: 12, width: 0, height: 0)
                 print("descriptionLable: \(String(describing: descriptionLable))")
             }
         }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

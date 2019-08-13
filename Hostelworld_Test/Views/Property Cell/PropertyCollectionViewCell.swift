@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PropertyCollectionViewCell: BaseCollectionViewCell {
+class PropertyCollectionViewCell: UICollectionViewCell {
     
     var property: Property? {
         didSet {
@@ -50,8 +50,19 @@ class PropertyCollectionViewCell: BaseCollectionViewCell {
     }()
     
     let propertyCost = UILabel(text: "$100", color: .lightGray, fontStyle: .boldSystemFont(ofSize: 20))
-
-    override func setUpViews() {
+   
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
+        setMaterialDesignTheme()
+        setUpViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+     func setUpViews() {
         // H stand for horizontal layout
         propertyThubnail.setViewCGRect(width: 120, height: self.frame.height)
         let HThubnailStackView = UIStackView(arrangedSubviews: [propertyThubnail])
@@ -73,6 +84,5 @@ class PropertyCollectionViewCell: BaseCollectionViewCell {
         let VCostStackView = VirticalStackView(arrangedSubviews: [propertyCost])
         addSubview(VCostStackView)
         VCostStackView.anchor(top: VRatingStackView.bottomAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 2, paddingRight: 8, width: 0, height: 30)
-
     }
 }

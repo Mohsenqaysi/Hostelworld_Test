@@ -62,8 +62,6 @@ class MapViewController: UIViewController {
             view.addSubview(VStack)
 
             let directionLable = UITextView()
-//                UILabel(text: "", color: .lightGray, fontStyle: .systemFont(ofSize: 18))
-//            directionLable.numberOfLines = 0
             directionLable.font = .systemFont(ofSize: 20)
             directionLable.isUserInteractionEnabled = false
             directionLable.text = directionText

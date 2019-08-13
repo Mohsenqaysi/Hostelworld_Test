@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RatingCollectionViewCell: UICollectionViewCell {
+class RatingCollectionViewCell: BaseCollectionViewCell {
     
     var rating: Rating? {
         didSet {
@@ -34,16 +34,7 @@ class RatingCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .white
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     func getSlider(label: String, rating: Int) -> UIStackView {
         let ratingLabel = UILabel(text: label,color: .darkGray, fontStyle: .systemFont(ofSize: 14))
         let slider: UISlider = {
