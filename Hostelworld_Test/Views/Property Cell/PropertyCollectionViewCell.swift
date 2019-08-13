@@ -15,14 +15,21 @@ class PropertyCollectionViewCell: UICollectionViewCell {
             if let propertyThubnailImages = property?.images,
                 let name = property?.name, let propertyTypeString = property?.type,
                 let rating = property?.overallRating {
-                // we can test for other images if the frist one does not exists
-                if let prefix = propertyThubnailImages.first?.prefix {
-                    if let suffix = propertyThubnailImages.first?.suffix {
-                        let fulluri = "\(prefix)\(suffix)"
-//                        print("fulluri: \(fulluri)")
-                       propertyThubnail.downloaded(from: fulluri, contentMode: .scaleAspectFill)
+                
+                for image in propertyThubnailImages {
+                    let prefix = image.prefix
+                    let suffix = image.suffix
+                    let fulluri = "\(prefix)\(suffix)"
+                    propertyThubnail.downloaded(from: fulluri, contentMode: .scaleAspectFill)
+                    // if the first image is nil continue to find an image to set on the image view ... if no image set the defualt image
+                    if propertyThubnail.image == nil {
+                        continue
+                    } else {
+                        print("fulluri: ", fulluri)
+                        break
                     }
                 }
+                
                 propertyName.text = name
                 propertyType.text = propertyTypeString
                 let overAllRating = rating.overall ?? 0
@@ -32,7 +39,7 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     }
     
     let propertyThubnail: UIImageView = {
-        let iv = UIImageView.getUIImageView(image: #imageLiteral(resourceName: "1"), contentMode: .scaleAspectFill)
+        let iv = UIImageView.getUIImageView(image: #imageLiteral(resourceName: "logo"), contentMode: .scaleAspectFill)
         iv.roundCorners(corners: .leftTopBottomLeft, radius: 8)
         return iv
     }()
