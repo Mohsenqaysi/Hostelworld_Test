@@ -11,10 +11,9 @@ import UIKit
 class HostelWorldAPI {
     
     static let shared = HostelWorldAPI() // Singleton
-    fileprivate static let endpointURLStringAllProperties = "https://private-anon-a53683acf6-practical3.apiary-mock.com/cities/1530/properties/"
+    fileprivate static let endpointURLStringAllProperties = "https://private-anon-6a466f2154-practical3.apiary-mock.com/cities/1530/properties/"
     
-    fileprivate static let endpointURLStringProperty = "https://private-anon-a53683acf6-practical3.apiary-mock.com/properties/"
-
+    fileprivate static let endpointURLStringProperty = "https://private-anon-6a466f2154-practical3.apiary-mock.com/properties/"
     // https://private-anon-a53683acf6-practical3.apiary-mock.com/properties/95319
     open func getAllPropertiesFeed(completion: @escaping (Properties?, Error?) -> ()){
         guard let url = URL(string: HostelWorldAPI.endpointURLStringAllProperties) else {return}
